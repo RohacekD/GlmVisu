@@ -20,10 +20,12 @@ get_filename_component(src_abs ${SOURCE_PATH} ABSOLUTE)
 set(INCLUDE_FILES_LIB
 	src/TransformSettings.h
 	src/Mat4.h
+  src/AngleSlider.h
 )
 set(SOURCE_FILES_LIB
    src/TransformSettings.h src/TransformSettings.cpp src/TransformSettings.ui
    src/Mat4.h src/Mat4.cpp src/Mat4.ui
+   src/AngleSlider.h src/AngleSlider.cpp
 	)
 
 add_library(
