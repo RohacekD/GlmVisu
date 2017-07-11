@@ -7,6 +7,10 @@ namespace GlmVisu {
 
 
 	AngleSlider::AngleSlider(QWidget * parent) :
+		AngleSlider(Qt::Orientation::Horizontal, parent)
+	{
+	}
+	AngleSlider::AngleSlider(Qt::Orientation orientation, QWidget * parent) :
 		QSlider(parent),
 		valuesType(Values::radians)
 	{
@@ -33,9 +37,9 @@ namespace GlmVisu {
 
 	double AngleSlider::radiansValue()
 	{
-		double angleValue = this->value() / AngleSlider::dpi;
+		double angleValue = this->doubleValue();
 		if (this->valuesType == Values::degrees) {
-			return angleValue * 3.14/180;
+			return glm::radians(angleValue);
 		}
 		else {
 			return angleValue;
@@ -44,7 +48,23 @@ namespace GlmVisu {
 
 	double AngleSlider::degreeValue()
 	{
-		return 0.0;
+		double angleValue = this->doubleValue();
+		if (this->valuesType == Values::degrees) {
+			return angleValue;
+		}
+		else {
+			return glm::degrees(angleValue);
+		}
+	}
+
+	double AngleSlider::doubleValue()
+	{
+		return this->value() / AngleSlider::dpi;
+	}
+
+	void AngleSlider::setDoubleValue(double value)
+	{
+		setValue(static_cast<int>(value * AngleSlider::dpi));
 	}
 
 	void AngleSlider::setTypeRadians()

@@ -14,12 +14,15 @@ namespace GlmVisu {
 		};
 		Q_ENUM(Values)
 		explicit AngleSlider(QWidget *parent = Q_NULLPTR);
+		explicit AngleSlider(Qt::Orientation orientation, QWidget *parent = Q_NULLPTR);
 		~AngleSlider();
 
 		void setValuesType(Values val);
 		inline Values getValuesType() const { return this->valuesType; }
 		double radiansValue();
 		double degreeValue();
+		double doubleValue();
+		void setDoubleValue(double);
 	signals:
 		void angleValueChanged(double value);
 		void degreeValueChanged(double value);
