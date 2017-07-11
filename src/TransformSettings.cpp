@@ -36,7 +36,7 @@ namespace GlmVisu {
 	}
 	glm::vec3 TransformSettings::getRotation()
 	{
-		return glm::vec3(ui->rotateX->value(), ui->rotateY->value(), ui->rotateZ->value());
+		return ui->Rotate->getRotation();
 	}
 	glm::vec3 TransformSettings::getScale()
 	{

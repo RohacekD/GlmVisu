@@ -55,7 +55,13 @@ install(EXPORT GlmVisuTargets DESTINATION
 
 target_link_libraries(${LIBRARY_NAME} Qt5::Widgets Qt5::Core Qt5::Gui glm)
 
-#target_include_directories(${LIBRARY_NAME} PUBLIC "src/")
+target_include_directories(${LIBRARY_NAME} PUBLIC  
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>  
+    $<INSTALL_INTERFACE:include/${LIBRARY_NAME}>  # <prefix>/include/mylib
+)
+
+
+
 set_property(TARGET ${LIBRARY_NAME} PROPERTY FOLDER "${examples_folder_name}")
 
 export(TARGETS ${LIBRARY_NAME}

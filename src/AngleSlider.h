@@ -2,8 +2,14 @@
 #include <QSlider>
 #include "qslider.h"
 
+#if defined GLM_VISU_EXPORT
+#define TEST_COMMON_DLLSPEC Q_DECL_EXPORT
+#else
+#define TEST_COMMON_DLLSPEC Q_DECL_IMPORT
+#endif
+
 namespace GlmVisu {
-	class AngleSlider :
+	class TEST_COMMON_DLLSPEC AngleSlider :
 		public QSlider
 	{
 		Q_OBJECT
