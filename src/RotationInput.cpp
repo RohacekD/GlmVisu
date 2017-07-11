@@ -10,15 +10,18 @@ namespace GlmVisu {
 
 	RotationInput::RotationInput(Qt::Orientation orientation, QWidget * parent) :
 		QGroupBox(parent),
+		valuesType(AngleSlider::Values::radians),
 		orientation(orientation)
 	{
 		QGridLayout *layout = new QGridLayout(this);
-		sliderX = new AngleSlider(this);
+		sliderX = new AngleSlider(orientation, this);
 		sliderX->setObjectName("sliderX");
-		sliderY = new AngleSlider(this);
+		sliderY = new AngleSlider(orientation, this);
 		sliderY->setObjectName("sliderY");
-		sliderZ = new AngleSlider(this);
+		sliderZ = new AngleSlider(orientation, this);
 		sliderZ->setObjectName("sliderZ");
+
+
 		layout->addWidget(new QLabel("x", this), 0, 0);
 		layout->addWidget(sliderX, 1, 0);
 		layout->addWidget(new QLabel("y", this), 0, 1);
@@ -56,6 +59,16 @@ namespace GlmVisu {
 		sliderY->setOrientation(orientation);
 		sliderZ->setOrientation(orientation);
 	}
+
+	void RotationInput::setValuesType(AngleSlider::Values type)
+	{
+		this->valuesType = type;
+		sliderX->setValuesType(type);
+		sliderY->setValuesType(type);
+		sliderZ->setValuesType(type);
+	}
+
+	inline AngleSlider::Values RotationInput::getValuesType() const { return this->valuesType; }
 
 	void RotationInput::changeX(double xAngle)
 	{

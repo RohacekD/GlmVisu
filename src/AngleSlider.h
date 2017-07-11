@@ -18,7 +18,7 @@ namespace GlmVisu {
 		~AngleSlider();
 
 		void setValuesType(Values val);
-		inline Values getValuesType() const { return this->valuesType; }
+		inline Values getValuesType() const;
 		double radiansValue();
 		double degreeValue();
 		double doubleValue();

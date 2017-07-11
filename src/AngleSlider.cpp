@@ -1,6 +1,5 @@
 #include "AngleSlider.h"
 #include <glm/glm.hpp>
-#include <QDebug>
 
 namespace GlmVisu {
 	const double AngleSlider::dpi = 100.0;
@@ -11,7 +10,7 @@ namespace GlmVisu {
 	{
 	}
 	AngleSlider::AngleSlider(Qt::Orientation orientation, QWidget * parent) :
-		QSlider(parent),
+		QSlider(orientation, parent),
 		valuesType(Values::radians)
 	{
 		setTypeRadians();
@@ -34,6 +33,8 @@ namespace GlmVisu {
 			}
 		}
 	}
+
+	inline AngleSlider::Values AngleSlider::getValuesType() const { return this->valuesType; }
 
 	double AngleSlider::radiansValue()
 	{

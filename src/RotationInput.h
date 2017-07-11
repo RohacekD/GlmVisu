@@ -19,6 +19,10 @@ namespace GlmVisu {
 		inline Qt::Orientation getOrientation() const;
 		void setOrientation(Qt::Orientation);
 
+		void setValuesType(AngleSlider::Values);
+
+		inline AngleSlider::Values getValuesType() const;
+
 	signals:
 		void rotationChanged(glm::vec3);
 		void xAngleChanged(double);
@@ -29,6 +33,7 @@ namespace GlmVisu {
 		void changeY(double);
 		void changeZ(double);
 	private:
+		GlmVisu::AngleSlider::Values valuesType;
 		Qt::Orientation orientation;
 		AngleSlider* sliderX;
 		AngleSlider* sliderY;
