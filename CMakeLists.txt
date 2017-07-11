@@ -20,12 +20,16 @@ get_filename_component(src_abs ${SOURCE_PATH} ABSOLUTE)
 set(INCLUDE_FILES_LIB
 	src/TransformSettings.h
 	src/Mat4.h
+  src/GlmVisu.h
   src/AngleSlider.h
+  src/RotationInput.h
 )
 set(SOURCE_FILES_LIB
+   src/GlmVisu.h
    src/TransformSettings.h src/TransformSettings.cpp src/TransformSettings.ui
    src/Mat4.h src/Mat4.cpp src/Mat4.ui
    src/AngleSlider.h src/AngleSlider.cpp
+   src/RotationInput.h src/RotationInput.cpp
 	)
 
 add_library(
