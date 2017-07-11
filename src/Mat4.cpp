@@ -14,6 +14,7 @@ namespace GlmVisu {
 	{
 		ui->setupUi(this);
 		setObjectName("mat4");
+		updateMatrix(glm::mat4(1.0f));
 	}
 
 
