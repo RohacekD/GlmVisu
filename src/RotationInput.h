@@ -2,13 +2,13 @@
 #include <QGroupBox>
 #include <glm\glm.hpp>
 #include "AngleSlider.h"
+#include <QtUiPlugin/QDesignerExportWidget>
 
 #if defined GLM_VISU_EXPORT
 #define TEST_COMMON_DLLSPEC Q_DECL_EXPORT
 #else
 #define TEST_COMMON_DLLSPEC Q_DECL_IMPORT
 #endif
-
 
 namespace GlmVisu {
 	class TEST_COMMON_DLLSPEC RotationInput :

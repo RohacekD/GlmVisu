@@ -2,6 +2,13 @@
 get_filename_component(GLMVISU_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 
 get_filename_component(GlmVisu_INCLUDE_DIRS "${GLMVISU_CMAKE_DIR}/../../../../include/GlmVisu" ABSOLUTE)
-include("${GLMVISU_CMAKE_DIR}/GlmVisuTargets.cmake")
+get_filename_component(GlmVisu_LINK_DIRS "${GLMVISU_CMAKE_DIR}/../../../../lib/GlmVisu" ABSOLUTE)
 
+if(NOT TARGET GlmVisu)
+  include("${GLMVISU_CMAKE_DIR}/GlmVisuTargets.cmake")
+endif()
 include_directories(${GlmVisu_INCLUDE_DIRS})
+link_directories(${GlmVisu_LINK_DIRS})
+
+
+set(GLMVISU_LIBRARIES GlmVisu)
