@@ -3,13 +3,13 @@
 #include <QtUiPlugin/QDesignerCustomWidgetInterface>
 
 namespace GlmVisu {
-	class RotationInputPlugin : public QObject, public QDesignerCustomWidgetInterface
+	class AngleSliderPlugin : public QObject, public QDesignerCustomWidgetInterface
 	{
 		Q_OBJECT
-			Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QDesignerCustomWidgetInterface")
+			//Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QDesignerCustomWidgetInterface")
 			Q_INTERFACES(QDesignerCustomWidgetInterface)
 	public:
-		explicit RotationInputPlugin(QObject *parent = 0);
+		explicit AngleSliderPlugin(QObject *parent = 0);
 
 		bool isContainer() const override;
 		bool isInitialized() const override;

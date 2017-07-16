@@ -2,7 +2,6 @@
 #include <QGroupBox>
 #include <glm\glm.hpp>
 #include "AngleSlider.h"
-#include "RotationInputPlugin.h"
 #include <QtUiPlugin/QDesignerExportWidget>
 
 #if defined GLM_VISU_EXPORT

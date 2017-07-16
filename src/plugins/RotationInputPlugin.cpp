@@ -34,7 +34,6 @@ namespace GlmVisu {
 
 	QString RotationInputPlugin::group() const
 	{
-		return "Display Widgets [Examples]";
 	}
 
 	QString RotationInputPlugin::includeFile() const
