@@ -2,18 +2,25 @@ set(LIBRARY_NAME "GlmVisu")
 
 
 find_package(glm)
-find_package(Qt5 COMPONENTS Core Gui Widgets)
+find_package(Qt5 COMPONENTS Core Gui Widgets Designer)
 
 
 if(NOT TARGET Qt5::Widgets)
    return()
 endif()
 
+set(QT_USE_QTDESIGNER TRUE)
+
+set(QT_PLUGINS_DIR "${Qt5Core_DIR}/../../../plugins")
+
+add_definitions(${QT_DEFINITIONS})
+
 set(HEADER_PATH src)
 set(SOURCE_PATH src)
 set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_PREFIX}/lib/${LIBRARY_NAME}/CMake/GlmVisu)
 set(INSTALL_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include/${LIBRARY_NAME})
 set(INSTALL_LIBRARY_DIR ${CMAKE_INSTALL_PREFIX}/lib/${LIBRARY_NAME})
+set(INSTALL_BIN_DIR ${CMAKE_INSTALL_PREFIX}/bin/${LIBRARY_NAME})
 
 get_filename_component(src_abs ${SOURCE_PATH} ABSOLUTE)
 
@@ -23,6 +30,7 @@ set(INCLUDE_FILES_LIB
   src/GlmVisu.h
   src/AngleSlider.h
   src/RotationInput.h
+  src/RotationInputPlugin.h
 )
 set(SOURCE_FILES_LIB
    src/GlmVisu.h
@@ -30,11 +38,12 @@ set(SOURCE_FILES_LIB
    src/Mat4.h src/Mat4.cpp src/Mat4.ui
    src/AngleSlider.h src/AngleSlider.cpp
    src/RotationInput.h src/RotationInput.cpp
+  src/RotationInputPlugin.h src/RotationInputPlugin.cpp
 	)
 
 add_library(
     ${LIBRARY_NAME}
-    STATIC
+    SHARED
     ${SOURCE_FILES_LIB}
     ${INCLUDE_FILES_LIB}
 )
@@ -49,11 +58,25 @@ install(FILES ${INCLUDE_FILES_LIB} DESTINATION include/${LIBRARY_NAME})
 install(TARGETS ${LIBRARY_NAME} 
   EXPORT GlmVisuTargets 
   DESTINATION lib/${LIBRARY_NAME})
+
+#install(TARGETS  ${LIBRARY_NAME}
+#  # IMPORTANT: Add the foo library to the "export-set"
+#  EXPORT GlmVisuTargets
+#  RUNTIME DESTINATION "${INSTALL_BIN_DIR}" COMPONENT bin
+# LIBRARY DESTINATION "${INSTALL_LIBRARY_DIR}" COMPONENT shlib
+#  PUBLIC_HEADER DESTINATION "${INSTALL_INCLUDE_DIR}/foo"
+#    COMPONENT dev)
+
+
+install(TARGETS ${LIBRARY_NAME}
+    DESTINATION ${QT_PLUGINS_DIR}/designer
+)
+
 install(EXPORT GlmVisuTargets DESTINATION
   lib/${LIBRARY_NAME})
 
 
-target_link_libraries(${LIBRARY_NAME} Qt5::Widgets Qt5::Core Qt5::Gui glm)
+target_link_libraries(${LIBRARY_NAME} Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Designer glm)
 
 target_include_directories(${LIBRARY_NAME} PUBLIC  
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>  
