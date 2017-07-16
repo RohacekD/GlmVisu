@@ -28,7 +28,7 @@ namespace GlmVisu {
 	QString RotationInputPlugin::domXml() const
 	{
 		return 
-			"<widget class=\"GlmVisu::MyCustomClass\" name=\"mycustomclass\">\n"
+			"<widget class=\"GlmVisu::RotationInput\" name=\"rotationInput\">\n"
 			"</widget>\n";
 	}
 
