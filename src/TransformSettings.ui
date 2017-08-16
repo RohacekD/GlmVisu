@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>309</height>
+    <height>324</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,6 +75,9 @@
        <widget class="GlmVisu::RotationInput" name="Rotate"/>
       </item>
       <item>
+       <widget class="GlmVisu::AngleInput" name="angleInput"/>
+      </item>
+      <item>
        <widget class="QGroupBox" name="Scale">
         <property name="title">
          <string>Scale</string>
@@ -123,7 +126,16 @@
    <class>GlmVisu::RotationInput</class>
    <extends>QGroupBox</extends>
    <header>RotationInput.h</header>
+   <addpagemethod>addPage</addpagemethod>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>GlmVisu::AngleInput</class>
+   <extends>QGroupBox</extends>
+   <header>AngleInput.h</header>
+   <slots>
+    <slot>changeAngleValue(double)</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -27,9 +27,8 @@ namespace GlmVisu {
 
 	QString AngleSliderPlugin::domXml() const
 	{
-		return 
-			"<widget class=\"GlmVisu::AngleSlider\" name=\"angleSlider\">\n"
-			"</widget>\n";
+		return
+			"";
 	}
 
 	QString AngleSliderPlugin::group() const

@@ -31,19 +31,21 @@ set(INCLUDE_FILES_LIB
   src/GlmVisu.h
   src/AngleSlider.h
   src/RotationInput.h
+  src/AngleInput.h
+  src/AngleType.h
 )
 
 file(GLOB_RECURSE PLUGIN_FILES "${SOURCE_PATH}/plugins/*.*")
-message(${PLUGIN_FILES})
 
 set(SOURCE_FILES_LIB
    src/GlmVisu.h
+   src/AngleType.h
    src/TransformSettings.h src/TransformSettings.cpp src/TransformSettings.ui
    src/Mat4.h src/Mat4.cpp src/Mat4.ui
    src/AngleSlider.h src/AngleSlider.cpp
+   src/AngleInput.h src/AngleInput.cpp
    src/RotationInput.h src/RotationInput.cpp
 	)
-
 
 
 add_library(
