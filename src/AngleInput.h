@@ -1,16 +1,13 @@
 #pragma once
-#include "AngleSlider.h"
+#include "GlmVisuApi.h"
 #include "AngleType.h"
 #include <QGroupBox>
-#include <QLabel>
 
-#if defined GLM_VISU_EXPORT
-#define TEST_COMMON_DLLSPEC Q_DECL_EXPORT
-#else
-#define TEST_COMMON_DLLSPEC Q_DECL_IMPORT
-#endif
+class QLabel;
 
 namespace GlmVisu {
+	class AngleSlider;
+
 	class TEST_COMMON_DLLSPEC AngleInput : public QGroupBox
 	{
 		Q_OBJECT
@@ -29,7 +26,7 @@ namespace GlmVisu {
 		QString getAngleName() const;
 
 
-		double doubleValue();
+		double doubleValue() const;
 		void setDoubleValue(double);
 		void setRadiansValue(double);
 		void setDegreesValue(double);
@@ -43,8 +40,8 @@ namespace GlmVisu {
 
 	private:
 		void init();
-		QLabel* value;
-		Qt::Orientation orientation;
-		AngleSlider* slider;
+		QLabel* m_value;
+		Qt::Orientation m_orientation;
+		AngleSlider* m_slider;
 	};
 }
