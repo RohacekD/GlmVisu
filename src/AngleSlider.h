@@ -1,6 +1,6 @@
 #pragma once
 #include <QSlider>
-#include "qslider.h"
+#include "AngleType.h"
 
 #if defined GLM_VISU_EXPORT
 #define TEST_COMMON_DLLSPEC Q_DECL_EXPORT
@@ -13,22 +13,20 @@ namespace GlmVisu {
 		public QSlider
 	{
 		Q_OBJECT
+		Q_PROPERTY(AngleType::Types angleType READ getValuesType WRITE setValuesType)
 	public:
-		enum Values {
-			radians,
-			degrees
-		};
-		Q_ENUM(Values)
 		explicit AngleSlider(QWidget *parent = Q_NULLPTR);
 		explicit AngleSlider(Qt::Orientation orientation, QWidget *parent = Q_NULLPTR);
 		~AngleSlider();
 
-		void setValuesType(Values val);
-		inline Values getValuesType() const;
+		void setValuesType(AngleType::Types val);
+		inline AngleType::Types getValuesType() const { return this->_angleType; }
 		double radiansValue();
 		double degreeValue();
 		double doubleValue();
 		void setDoubleValue(double);
+		void setRadiansValue(double);
+		void setDegreesValue(double);
 	signals:
 		void angleValueChanged(double value);
 		void degreeValueChanged(double value);
@@ -39,7 +37,7 @@ namespace GlmVisu {
 	private:
 		void setTypeRadians();
 		void setTypeDegrees();
-		Values valuesType = radians;
+		AngleType::Types _angleType;
 		static const double dpi;
 	};
 	

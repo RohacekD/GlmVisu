@@ -16,7 +16,6 @@ namespace GlmVisu {
 	class TEST_COMMON_DLLSPEC TransformSettings : public QWidget
 	{
 		Q_OBJECT
-
 	public:
 		explicit TransformSettings(QWidget  *parent = 0);
 	public slots:

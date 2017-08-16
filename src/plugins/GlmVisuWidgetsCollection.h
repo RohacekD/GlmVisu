@@ -2,9 +2,6 @@
 #include <QtDesigner/QtDesigner>
 #include <QtCore/qplugin.h>
 
-#include "AngleSliderPlugin.h"
-#include "RotationInputPlugin.h"
-
 namespace GlmVisu {
 	class GlmVisuWidgetsCollection : public QObject, public QDesignerCustomWidgetCollectionInterface
 	{

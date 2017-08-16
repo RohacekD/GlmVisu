@@ -2,6 +2,7 @@
 #include <QGroupBox>
 #include <glm\glm.hpp>
 #include "AngleSlider.h"
+#include "AngleType.h"
 #include <QtUiPlugin/QDesignerExportWidget>
 
 #if defined GLM_VISU_EXPORT
@@ -25,9 +26,9 @@ namespace GlmVisu {
 		inline Qt::Orientation getOrientation() const;
 		void setOrientation(Qt::Orientation);
 
-		void setValuesType(AngleSlider::Values);
+		void setValuesType(AngleType::Types);
 
-		inline AngleSlider::Values getValuesType() const;
+		inline AngleType::Types getValuesType() const { return this->_anglesType; };
 
 	signals:
 		void rotationChanged(glm::vec3);
@@ -39,7 +40,7 @@ namespace GlmVisu {
 		void changeY(double);
 		void changeZ(double);
 	private:
-		GlmVisu::AngleSlider::Values valuesType;
+		AngleType::Types _anglesType;
 		Qt::Orientation orientation;
 		AngleSlider* sliderX;
 		AngleSlider* sliderY;

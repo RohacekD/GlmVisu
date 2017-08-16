@@ -1,0 +1,4 @@
+1) Všechny export calssy musí mít deklaraci exportu
+2) Tøída k exportu musí být Q_OBJECT aby fungovala v designeru
+2) Všechny pluginy musí být v plugins/
+3) Všechny pluginy se registrují v GlmVisuWidgetsCollection.cpp
