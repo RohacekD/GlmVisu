@@ -1,15 +1,11 @@
 #ifndef MAT4VISU_H
 #define MAT4VISU_H
 
+#include "GlmVisuApi.h"
+
 #include <QWidget>
 #include <glm\glm.hpp>
 #include <string>
-
-#if defined GLM_VISU_EXPORT
-#define TEST_COMMON_DLLSPEC Q_DECL_EXPORT
-#else
-#define TEST_COMMON_DLLSPEC Q_DECL_IMPORT
-#endif
 
 
 namespace Ui {

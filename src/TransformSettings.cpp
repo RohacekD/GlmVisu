@@ -9,9 +9,9 @@
 namespace GlmVisu {
 	TransformSettings::TransformSettings(QWidget  *parent) :
 		QWidget(parent),
-		ui(new Ui::TransformSettings)
+		m_ui(new Ui::TransformSettings)
 	{
-		ui->setupUi(this);
+		m_ui->setupUi(this);
 		setObjectName("mat4");
 	}
 
@@ -32,14 +32,14 @@ namespace GlmVisu {
 	}
 	glm::vec3 TransformSettings::getTransforamtion()
 	{
-		return glm::vec3(ui->translateX->text().toDouble(), ui->translateY->text().toDouble(), ui->translateZ->text().toDouble());
+		return glm::vec3(m_ui->translateX->text().toDouble(), m_ui->translateY->text().toDouble(), m_ui->translateZ->text().toDouble());
 	}
 	glm::vec3 TransformSettings::getRotation()
 	{
-		return ui->Rotate->getRotation();
+		return m_ui->Rotate->getRotation();
 	}
 	glm::vec3 TransformSettings::getScale()
 	{
-		return glm::vec3(ui->scaleX->text().toDouble(), ui->scaleY->text().toDouble(), ui->scaleZ->text().toDouble());
+		return glm::vec3(m_ui->scaleX->text().toDouble(), m_ui->scaleY->text().toDouble(), m_ui->scaleZ->text().toDouble());
 	}
 }

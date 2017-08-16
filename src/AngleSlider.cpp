@@ -4,7 +4,7 @@
 #include <QDebug>
 
 namespace GlmVisu {
-	const double AngleSlider::dpi = 100.0;
+	const double AngleSlider::s_dpi = 100.0;
 
 
 	AngleSlider::AngleSlider(QWidget * parent) :
@@ -13,7 +13,7 @@ namespace GlmVisu {
 	}
 	AngleSlider::AngleSlider(Qt::Orientation orientation, QWidget * parent) :
 		QSlider(orientation, parent),
-		_angleType(AngleType::Types::radians)
+		m_angleType(AngleType::Types::radians)
 	{
 		setTypeRadians();
 		connect(this, &QAbstractSlider::valueChanged, this, &AngleSlider::notifyValueChanged);
@@ -23,7 +23,7 @@ namespace GlmVisu {
 	}
 
 	void AngleSlider::setValuesType(AngleType::Types valType) {
-		if (this->_angleType != valType) {
+		if (this->m_angleType != valType) {
 			double value = static_cast<double>(this->value());
 			if (valType == AngleType::Types::radians) {
 				setTypeRadians();
@@ -37,10 +37,10 @@ namespace GlmVisu {
 	}
 
 
-	double AngleSlider::radiansValue()
+	double AngleSlider::radiansValue() const
 	{
 		double angleValue = this->doubleValue();
-		if (this->_angleType == AngleType::Types::degrees) {
+		if (this->m_angleType == AngleType::Types::degrees) {
 			return glm::radians(angleValue);
 		}
 		else {
@@ -48,10 +48,10 @@ namespace GlmVisu {
 		}
 	}
 
-	double AngleSlider::degreeValue()
+	double AngleSlider::degreeValue() const
 	{
 		double angleValue = this->doubleValue();
-		if (this->_angleType == AngleType::Types::degrees) {
+		if (this->m_angleType == AngleType::Types::degrees) {
 			return angleValue;
 		}
 		else {
@@ -59,19 +59,19 @@ namespace GlmVisu {
 		}
 	}
 
-	double AngleSlider::doubleValue()
+	double AngleSlider::doubleValue() const
 	{
-		return this->value() / AngleSlider::dpi;
+		return this->value() / AngleSlider::s_dpi;
 	}
 
 	void AngleSlider::setDoubleValue(double value)
 	{
-		setValue(static_cast<int>(value * AngleSlider::dpi));
+		setValue(static_cast<int>(value * AngleSlider::s_dpi));
 	}
 
 	void AngleSlider::setRadiansValue(double radians)
 	{
-		if (this->_angleType == AngleType::degrees)
+		if (this->m_angleType == AngleType::degrees)
 			this->setDoubleValue(glm::degrees(radians));
 		else
 			this->setDoubleValue(radians);
@@ -79,7 +79,7 @@ namespace GlmVisu {
 
 	void AngleSlider::setDegreesValue(double degrees)
 	{
-		if (this->_angleType == AngleType::radians)
+		if (this->m_angleType == AngleType::radians)
 			this->setDoubleValue(glm::radians(degrees));
 		else
 			this->setDoubleValue(degrees);
@@ -88,13 +88,13 @@ namespace GlmVisu {
 	void AngleSlider::setTypeRadians()
 	{
 		setMinimum(0);
-		setMaximum((int)(glm::radians(360.0f) * AngleSlider::dpi));
+		setMaximum((int)(glm::radians(360.0f) * AngleSlider::s_dpi));
 	}
 
 	void AngleSlider::setTypeDegrees()
 	{
 		setMinimum(0);
-		setMaximum((int)(360 * AngleSlider::dpi));
+		setMaximum((int)(360 * AngleSlider::s_dpi));
 	}
 
 	void AngleSlider::notifyValueChanged(int value) {

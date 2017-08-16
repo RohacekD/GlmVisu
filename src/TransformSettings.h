@@ -1,12 +1,9 @@
 #pragma once
+
+#include "GlmVisuApi.h"
+
 #include <QWidget>
 #include <glm\glm.hpp>
-
-#if defined GLM_VISU_EXPORT
-#define TEST_COMMON_DLLSPEC Q_DECL_EXPORT
-#else
-#define TEST_COMMON_DLLSPEC Q_DECL_IMPORT
-#endif
 
 namespace Ui {
 	class TransformSettings;
@@ -18,6 +15,7 @@ namespace GlmVisu {
 		Q_OBJECT
 	public:
 		explicit TransformSettings(QWidget  *parent = 0);
+
 	public slots:
 		void updatedValue();
 	signals:
@@ -26,7 +24,8 @@ namespace GlmVisu {
 		glm::vec3 getTransforamtion();
 		glm::vec3 getRotation();
 		glm::vec3 getScale();
-		glm::mat4 mat;
-		Ui::TransformSettings *ui;                 ///< Qt::Ui from .ui file
+
+		glm::mat4 m_mat;
+		Ui::TransformSettings *m_ui;                 ///< Qt::Ui from .ui file
 	};
 }

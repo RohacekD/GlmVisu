@@ -35,6 +35,10 @@ set(INCLUDE_FILES_LIB
   src/AngleType.h
 )
 
+set(INCLUDE_API_HEADER
+	src/GlmVisuApi.h
+	)
+
 file(GLOB_RECURSE PLUGIN_FILES "${SOURCE_PATH}/plugins/*.*")
 
 set(SOURCE_FILES_LIB
@@ -54,6 +58,7 @@ add_library(
     ${SOURCE_FILES_LIB}
     ${INCLUDE_FILES_LIB}
     ${PLUGIN_FILES}
+	${INCLUDE_API_HEADER}
 )
 target_link_libraries(${LIBRARY_NAME} Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Designer glm)
 source_group("plugins" FILES ${PLUGIN_FILES})
